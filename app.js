@@ -7,9 +7,9 @@ function prayerTimes(latitude, longitude) {
         let today = date.getDate();
         let data  = response.data[0].timings;
         
-        let app         = getElementById('app');
-        let table       = createElement('table');
-        let tableTbody  = createElement('tbody');
+        let app         = document.getElementById('app');
+        let table       = document.createElement('table');
+        let tableTbody  = document.createElement('tbody');
 
         for(i in data) {
           let row        = tableTbody.insertRow();
@@ -33,7 +33,12 @@ function success(position) {
 }
 
 function error() {
-    alert('Posisi tidak dapat diakses');
+    prayerTimes('3.597031', '98.678513');
+
+    let pesanError = document.getElementById('pesan-error');
+    let pesan      = document.createElement('p');
+    pesan.innerHTML = "Karena Anda tidak mengizinkan untuk mengakses lokasi, maka kami menampilkan jadwal sholat di daerah Medan dan sekitarnya.";
+    pesanError.appendChild(pesan);
 }
 
 function userLocation() {
